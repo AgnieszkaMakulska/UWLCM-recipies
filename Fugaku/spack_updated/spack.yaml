@@ -1,0 +1,38 @@
+spack:
+  specs:
+  - boost +mpi +program_options +filesystem +chrono +regex +serialization +atomic +thread +date_time +system +iostreams +timer
+  - cmake
+  - hdf5 +mpi +hl +cxx
+  - thrust
+  - blitz %gcc@12.2.0
+  concretizer:
+    unify: true
+    reuse: true
+  packages:
+    all:
+      target: [a64fx]
+    # Fujitsu MPI (Tofu + PJM launch). Fugaku provides it only for gcc 8.5/12.2, fj and
+    # llvm 22 (not gcc 15): require it so spack fails instead of building OpenMPI.
+    mpi:
+      require: [fujitsu-mpi]
+    c:
+      require: [gcc@12.2.0]
+    cxx:
+      require: [gcc@12.2.0]
+    fortran:
+      require: [gcc@12.2.0]
+    # gcc 12.2.0 is still installed but no longer registered in Fugaku's spack config
+    gcc:
+      externals:
+      - spec: gcc@12.2.0 languages:='c,c++,fortran' arch=linux-rhel8-a64fx
+        prefix: /vol0004/apps/oss/spack-v1.0.1/opt/spack/linux-a64fx/gcc-12.2.0-f57uyl2rzc74cow54td7bdy77xajibir
+        extra_attributes:
+          compilers:
+            c: /vol0004/apps/oss/spack-v1.0.1/opt/spack/linux-a64fx/gcc-12.2.0-f57uyl2rzc74cow54td7bdy77xajibir/bin/gcc
+            cxx: /vol0004/apps/oss/spack-v1.0.1/opt/spack/linux-a64fx/gcc-12.2.0-f57uyl2rzc74cow54td7bdy77xajibir/bin/g++
+            fortran: /vol0004/apps/oss/spack-v1.0.1/opt/spack/linux-a64fx/gcc-12.2.0-f57uyl2rzc74cow54td7bdy77xajibir/bin/gfortran
+  repos:
+    fugaku.rccs: /vol0004/apps/oss/spack/var/spack/fugaku-packages/repos/spack_repo/fugaku/rccs
+    fugaku.rist: /vol0004/apps/oss/spack/var/spack/fugaku-packages/repos/spack_repo/fugaku/rist
+    fugaku.update: /vol0004/apps/oss/spack/var/spack/fugaku-packages/repos/spack_repo/fugaku/update
+    fugaku.local: /vol0004/apps/oss/spack/var/spack/fugaku-packages/repos/spack_repo/fugaku/local
