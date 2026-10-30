@@ -10,9 +10,9 @@
 #PJM -D /vol0004/ra000005/data/u15386/output/moist_thermal_blk_1m
 #PJM -o /vol0004/ra000005/data/u15386/output/moist_thermal_blk_1m/%j.out
 
-export WORK_LOCATION=/vol0004/ra000005/data/u15386
-export SPACK_LOCATION=/vol0006/mdt1/home/u15386
-export BUILD_LOCATION=/vol0006/mdt1/home/u15386
+export WORK_LOCATION=/vol0004/ra000005/data/u15386   # data directory
+export SPACK_LOCATION=/vol0006/mdt1/home/u15386  # directory where spack is installed
+export BUILD_LOCATION=/vol0006/mdt1/home/u15386  # directory where UWLCM is installed
 
 # For UWLCM built with gcc 12.2.0 + Fujitsu MPI (spack_uwlcm_fixed.yaml).
 # Fujitsu MPI is started by the system mpiexec, which takes the nodes from PJM.

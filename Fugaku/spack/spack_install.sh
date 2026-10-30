@@ -22,6 +22,8 @@ cp /vol0004/apps/oss/spack/etc/spack/packages.yaml ${SPACK_LOCATION}/.spack/
 
 spack env activate ${SPACK_LOCATION}
 
+mkdir -p output
+
 if ! spack concretize --force > output/concretize.log 2>&1; then
     echo "concretize failed, see output/concretize.log" >&2
     exit 1
