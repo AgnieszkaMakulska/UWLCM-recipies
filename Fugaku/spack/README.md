@@ -117,3 +117,16 @@ cmake .. \
 make -j12 install
 ```
 > Change `BUILD_DIR` to your directory. This is where the executables will be placed.
+
+
+## Run scripts
+
+> All scripts contain paths, user ID and project group, change them to your own before use.
+
+- `blk_1m_moist_thermal.sh`: single moist-thermal simulation with one-moment bulk microphysics.
+- `lgrngn_moist_thermal.sh`: single moist-thermal simulation with Lagrangian super-droplet microphysics.
+- `blk_1m_1D_grid_scaling.sh`: submits bulk-microphysics runs on increasing node counts with the domain extended in x (weak scaling).
+- `blk_1m_2D_grid_scaling.sh`: submits bulk-microphysics runs on increasing node counts with the domain extended in x and y (weak scaling).
+- `lgrngn_strong_scaling.sh`: submits Lagrangian-microphysics runs of a fixed-size problem on increasing node counts (strong scaling).
+- `total_time.sh`: collects the total run time versus number of nodes from the output of the scaling runs.
+- `plot_scaling.py`: plots wall time per time step versus number of nodes from the values given by `total_time.sh`.
