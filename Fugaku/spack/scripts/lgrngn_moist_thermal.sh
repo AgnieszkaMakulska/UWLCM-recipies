@@ -2,7 +2,7 @@
 #PJM -L "rscunit=rscunit_ft01"
 #PJM -L "rscgrp=small-s2"
 #PJM -L "node=4"
-#PJM -L "elapse=01:20:00"
+#PJM -L "elapse=05:00:00"
 #PJM --mpi "max-proc-per-node=4"
 #PJM -g ra000005
 #PJM -x PJM_LLIO_GFSCACHE=/vol0004:/vol0006
@@ -69,7 +69,7 @@ ldd $BUILD_LOCATION/builds/bin/uwlcm | grep -E "libmpi|gomp|stdc|not found"
 mpiexec -n ${NPROC} \
         $BUILD_LOCATION/builds/bin/uwlcm \
         --outdir=${outdir}  --case=moist_thermal --nx=${NX} --ny=${NY} --nz=96 --dt=0.5 \
-        --spinup=0 --nt=12 --micro=lgrngn --sd_conc=${SD_CONC} --backend=OpenMP --outfreq=12 \
+        --spinup=0 --nt=60 --micro=lgrngn --sd_conc=${SD_CONC} --backend=OpenMP --outfreq=60 \
         --sstp_cond=5 --sstp_coal=5 --coal=1 --sgs=1 --window=0 \
         --coal_kernel=hall --term_vel=beard76 --save_vel=0 --X=${X} --Y=${Y}
 # lgrngn micro with MPI gives an error on exit: log the code instead of hiding it

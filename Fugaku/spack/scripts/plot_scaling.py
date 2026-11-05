@@ -32,8 +32,8 @@ def nx_per_mpi(N):
 
 fig, ax1 = plt.subplots()
 nt = 120 #number of timesteps
-nodes = np.array([4, 16, 64, 144, 256, 512])
-times = np.array([383.5, 388.5, 400.7, 405.9, 411.0, 450.0])
+nodes = np.array([4, 9, 16, 36, 64, 144])
+times = np.array([383.5, 387.1, 388.5, 393.5, 400.7, 405.9])
 times_per_step = times / nt
 nx_per_mpis = np.array([round(nx_per_mpi(N), 2) for N in nodes])
 
@@ -72,3 +72,35 @@ plt.title('Lagrangian strong scaling')
 plt.xticks(nodes, nodes)
 plt.grid()
 plt.savefig("lgrngn_strong_scaling.pdf")
+
+
+# LGRNGN 1D grid scaling
+plt.figure()
+nt = 12 #number of timesteps
+nodes = np.array([4, 32, 64, 128, 256, 512])
+times = np.array([774.4, 784.0, 787.3, 793.2, 814.4, 851.3])
+times_per_step = times / nt
+plt.plot(nodes, times_per_step, 'o', markersize=6)
+plt.xlabel('number of nodes')
+plt.ylabel('wall time per step [s]')
+plt.title('Lagrangian 1D grid scaling')
+#plt.xscale('log')
+plt.xticks(nodes, nodes)
+plt.grid()
+plt.savefig("lgrngn_1D_grid_scaling.pdf")
+
+# LGRNGN 2D grid scaling
+plt.figure()
+nt = 120 #number of timesteps
+nodes = np.array([4, 9, 16, 36, 64, 144])
+times = np.array([6643.2, 6709.6, 6782.8, 6971.4, 6728.4, 6704.4])
+times_per_step = times / nt
+plt.plot(nodes, times_per_step, 'o', markersize=6)
+plt.xlabel('number of nodes')
+plt.ylabel('wall time per step [s]')
+plt.title('Lagrangian 2D grid scaling')
+#plt.xscale('log')
+plt.xticks(nodes, nodes)
+plt.grid()
+plt.ylim(40, 80)
+plt.savefig("lgrngn_2D_grid_scaling.pdf")
