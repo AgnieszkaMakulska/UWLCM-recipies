@@ -3,9 +3,7 @@
 export WORK_LOCATION=/vol0004/ra000005/data/u15386
 JOBSCRIPT=$WORK_LOCATION/scripts/blk_1m_moist_thermal.sh
 
-#for N in 4 16 64 144 256 1024
-#for N in 9
-for N in 36
+for N in 4 9 16 36 64 144
 do
    # Determine the resource group based on node count
    if [ $N -gt 384 ]; then
